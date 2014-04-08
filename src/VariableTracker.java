@@ -54,10 +54,10 @@ public class VariableTracker {
 							// Go through all types names
 							// Count how many times the variable has this type
 							BasicDBObject variableTypeCountQuery = new BasicDBObject("variableClass", className).append("variableMethod", methodName).append("variableName", variableName).append("variableType", variableType);
-							List<String> variableTypesCount = coll.distinct("variableType", variableTypeCountQuery);
+							long variableTypesCount = coll.count(variableTypeCountQuery);
 							
 							if( variableTypes.size() > 1) {
-								System.out.println("      "+variableType+" : "+ variableTypesCount.size()+"x");
+								System.out.println("      "+variableType+" : "+ variableTypesCount+"x");
 							}
 						}
 					}
